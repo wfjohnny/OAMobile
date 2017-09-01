@@ -16,7 +16,7 @@ var Signalr = "http://www.isoftsmart.com/";
     function callBackFuncJson(url, jsonVal, type) {
         var resdata;
         var json= jsonVal;
-        if (type == "") {
+        if (type == "") { 
             type = "Post";  
         }
         $.ajax({
