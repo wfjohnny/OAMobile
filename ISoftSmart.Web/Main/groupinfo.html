@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>金豆一群</title>
+    <link rel="stylesheet" type="text/css" href="../Jscript/hongbao/css/amazeui.css" />
+    <link rel="stylesheet" type="text/css" href="../Jscript/hongbao/css/swiper-3.4.2.min.css?v=1.1" />
+    <link rel="stylesheet" type="text/css" href="../Jscript/hongbao/css/main.css?v=1.1" />
+    <link href="../Jscript/css/bubbles.css?v=1.1" rel="stylesheet" />
+</head>
+<body>
+    <div class="top pr cf">
+        <!--<a  class="go-back pa cf" href="javascript:void(0);">
+            关闭
+        </a>-->
+        <a class="renyuan pa cf" href="javascript:void(0);"><img id="menus" src="../Jscript/hongbao/images/renyuan.jpg" /></a>
+        <h2 class="tc" id="title">金豆一群</h2>
+    </div>
+    <div class="banner">
+        <div class="picMarquee-top" id="contentArea" style="overflow:auto">
+            <div class="bd">
+                <ul class="" id="msg"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="shurukuang oz" id="ctlMenu">
+        <!--<div class="yuyin left tc">
+            <img src="../Jscript/hongbao/images/yuyin.jpg" />
+        </div>-->
+        <div class="shuru-wenben left">
+            <input type="text" id="textmsg" />
+        </div>
+        <div class="biaoqing left tc" style="width:30px">
+            <img src="../Jscript/hongbao/images/biaoqing.png" style="width:30px" />
+        </div>
+        <div id="actives" class="yingyong left tc" style="width:30px">
+            <img src="../Jscript/hongbao/images/yingyong.png" style="width:30px" />
+        </div>
+        <div class="left tc fasong">
+            <a class="c3" href="javascript:void(0);" id="sendMsg" style="margin-top:15px;">发送</a>
+        </div>
+    </div>
+    <div id="models" class="cont-index none">
+        <div class="yingyong-bd">
+            <div class="swiper-container1">
+                <div class="swiper-wrapper1">
+                    <div class="swiper-slide">
+                        <ul class="admin-content-list ">
+                            <li class="am-text-center" style="width:30%;float:left;margin-left:20%;">
+                                <a id="sendBag" href="javascript:void(0);" class="">
+                                    <img src="../Jscript/hongbao/images/hongbao.png">
+                                    <p>红包</p>
+                                </a>
+                            </li>
+
+                            <li class="am-text-center" style="width:30%;float:left;">
+                                <a href="javascript:void(0);" id="getAmt" class="">
+                                    <img src="../Jscript/hongbao/images/qunshoukuan.png" />
+                                    <p>收款</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    <div id="emojmodels" class="cont-index none">
+        <div class="yingyong-bd">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <ul class="admin-content-list ">
+                            <li class="am-text-center" style="width:20%;float:left;">
+                                <a id="start" href="javascript:void(0);" onclick="sendImg('1');" class="">
+                                    <img src="../image/start.png">
+                                    <p>开始下注</p>
+                                </a>
+                            </li>
+                            <li class="am-text-center" style="width:20%;float:left;">
+                                <a href="javascript:void(0);" id="stop" onclick="sendImg('2');" class="">
+                                    <img src="../image/stop.png" />
+                                    <p>停止下注</p>
+                                </a>
+                            </li>
+                            <li class="am-text-center" style="width:20%;float:left;">
+                                <a id="any" href="javascript:void(0);" onclick="sendImg('3');" class="">
+                                    <img src="../image/any.png" />
+                                    <p>投注询问</p>
+                                </a>
+                            </li>
+                            <li class="am-text-center" style="width:20%;float:left;">
+                                <a id="speend" href="javascript:void(0);" onclick="sendImg('4');" class="">
+                                    <img src="../image/speend.png" />
+                                    <p>催收款</p>
+                                </a>
+                            </li>
+                            <li class="am-text-center" style="width:20%;float:left;">
+                                <a id="next" href="javascript:void(0);" onclick="sendImg('5');" class="">
+                                    <img src="../image/next.png" />
+                                    <p>换庄</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--<div class="swiper-slide">
+                        <ul class="admin-content-list ">
+
+
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="admin-content-list ">
+
+                        </ul>
+                    </div>-->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="initHeight" />
+    <script src="../Script/jquery-2.1.4.min.js"></script>
+    <script src="../Script/jquery.signalR-2.2.2.min.js"></script>
+    <!--这里要注意,这是虚拟目录,也就是你在OWIN Startup中注册的地址-->
+    <script src="../signalr/hubs"></script>
+    <script src="../init/initData.js"></script>
+
+    <script src="../init/jquery.cookie.js?v=1.1"></script>
+    <script src="../Jscript/layer/layer.js?v=1.1"></script>
+    <script src="../Jscript/hongbao/js/jquery.SuperSlide.2.1.1.js?v=1.1" type="text/javascript" charset="utf-8"></script>
+    <script src="../Jscript/groupinfo/group.js?v=1.1"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: Apiurl + "api/test/getsharepara", // url  action是方法的名称
+            type: "Post",
+            async: true,
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,//新增cookie跨域配置
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+                if (res.code == "SCCESS") {
+                    wx.config({
+                        debug: false,
+                        appId: AppId, // 必填，公众号的唯一标识
+                        timestamp: res.result.timestamp, // 必填，生成签名的时间戳
+                        nonceStr: res.result.nonceStr, // 必填，生成签名的随机串
+                        signature: res.result.signature,// 必填，签名，见附录1
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ',
+                                    'onMenuShareWeibo', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                    });
+                }
+            }
+        });
+        wx.ready(function () {
+            wx.onMenuShareAppMessage({
+                title: '轻松一刻',
+                desc: '轻松一刻',
+                link: 'http://www.isoftsmart.com/bagWeb/Main/share.html',
+                imgUrl: 'http://img3.douban.com/view/movie_poster_cover/spst/public/p2166127561.jpg',
+                trigger: function (res) {
+                },
+                success: function (res) {
+                },
+                cancel: function (res) {
+                },
+                fail: function (res) {
+                }
+            });
+            wx.onMenuShareTimeline({
+                title: '轻松一刻',
+                desc: '轻松一刻',
+                link: 'http://www.isoftsmart.com/bagWeb/Main/share.html',
+                imgUrl: 'http://img3.douban.com/view/movie_poster_cover/spst/public/p2166127561.jpg',
+                trigger: function (res) {
+                },
+                success: function (res) {
+                },
+                cancel: function (res) {
+                },
+                fail: function (res) {
+                }
+            });
+            wx.onMenuShareQQ({
+                title: '轻松一刻',
+                desc: '轻松一刻',
+                link: 'http://www.isoftsmart.com/bagWeb/Main/share.html',
+                imgUrl: 'http://img3.douban.com/view/movie_poster_cover/spst/public/p2166127561.jpg',
+                trigger: function (res) {
+                },
+                success: function (res) {
+                },
+                cancel: function (res) {
+                },
+                fail: function (res) {
+                }
+            });
+            wx.onMenuShareQZone({
+                title: '轻松一刻',
+                desc: '轻松一刻',
+                link: 'http://www.isoftsmart.com/bagWeb/Main/share.html',
+                imgUrl: 'http://img3.douban.com/view/movie_poster_cover/spst/public/p2166127561.jpg',
+                trigger: function (res) {
+                },
+                success: function (res) {
+                },
+                cancel: function (res) {
+                },
+                fail: function (res) {
+                }
+            });
+        });
+    </script>
+    <script src="../Jscript/hongbao/js/swiper-3.4.2.jquery.min.js?v=1.1" type="text/javascript" charset="utf-8"></script>
+    <script>
+
+
+//      点击加号,应用弹出和关闭
+        $(".yingyong").click(function () {
+            var bodyheight = $("#initHeight").val();
+            if ($("#models").hasClass("none")) {
+                $("#models").removeClass("none").css("bottom", 0);
+				$(".shurukuang").css("bottom", "133px");
+				var height = parseInt(bodyheight) - ($(".shurukuang").height() + $("#models").height()) - $(".shurukuang").height();
+				$("#contentArea").css("height", height);
+				$('#contentArea').scrollTop($('.bd').height());
+
+                //图片
+				if (!$("#emojmodels").hasClass("none")) {
+				    var contHeight = parseInt(bodyheight) - $("#emojmodels").height();
+				    $("#emojmodels").addClass("none");
+				}
+			} else {
+                var contHeight = parseInt(bodyheight) - $("#models").height();
+                $("#models").addClass("none");
+				$(".shurukuang").css("bottom", 0);
+				$("#contentArea").css("height", contHeight);
+				$('#contentArea').scrollTop($('.bd').height());
+				if (!$("#emojmodels").hasClass("none")) {
+				    var contHeight = parseInt(bodyheight) - $("#emojmodels").height();
+				    $("#emojmodels").addClass("none");
+				}
+                //图片
+
+			}
+        });
+        $(".biaoqing").click(function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                slidesPerView: 'auto',
+                direction: 'horizontal',
+                loop: true,
+                pagination: '.swiper-pagination',
+            });
+            var bodyheight = $("#initHeight").val();
+            if ($("#emojmodels").hasClass("none")) {
+                $("#emojmodels").removeClass("none").css("bottom", 0);
+                $(".shurukuang").css("bottom", "133px");
+                var height = parseInt(bodyheight) - ($(".shurukuang").height() + $("#emojmodels").height()) - $(".shurukuang").height();
+                $("#contentArea").css("height", height);
+                $('#contentArea').scrollTop($('.bd').height());
+                if (!$("#models").hasClass("none")) {
+                    var contHeight = parseInt(bodyheight) - $("#models").height();
+                    $("#models").addClass("none");
+                }
+            } else {
+                var contHeight = parseInt(bodyheight) - $("#emojmodels").height();
+                $("#emojmodels").addClass("none");
+                $(".shurukuang").css("bottom", 0);
+                $("#contentArea").css("height", contHeight);
+                $('#contentArea').scrollTop($('.bd').height());
+                if (!$("#models").hasClass("none")) {
+                    var contHeight = parseInt(bodyheight) - $("#models").height();
+                    $("#models").addClass("none");
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
