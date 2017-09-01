@@ -17,7 +17,7 @@ var Signalr = "http://www.isoftsmart.com/";
         var resdata;
         var json= jsonVal;
         if (type == "") { 
-            type = "Post";  
+            type = "Post";   
         }
         $.ajax({
             url: Apiurl + url, // url  action是方法的名称
